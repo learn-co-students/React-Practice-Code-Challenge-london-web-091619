@@ -1,20 +1,23 @@
 import React, { Fragment } from 'react'
 
-const Sushi = (props) => {
+const Sushi = ({sushi, name, img_url, price, eatSushi, eaten}) => {
   return (
     <div className="sushi">
       <div className="plate" 
-           onClick={/* Give me a callback! */ null}>
-        { 
-          /* Tell me if this sushi has been eaten! */ 
-          true ?
+           onClick={() => eaten.includes(sushi) || eatSushi(sushi)}>
+        
+          {eaten.includes(sushi)
+            ?
             null
           :
-            <img src={/* Give me an image source! */} width="100%" />
+            <img 
+            src={"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fappstickers-cdn.appadvice.com%2F1209633997%2F821107742%2F3eb9bd721c3b611eb29f8c4885dd8ffa-1.png&f=1&nofb=1"}
+            alt = 'sushi on a plate'
+            width="100%" />
         }
       </div>
       <h4 className="sushi-details">
-        {/* Give me a name! */} - ${/* Give me a price! */}
+        {name} - ${price}
       </h4>
     </div>
   )
